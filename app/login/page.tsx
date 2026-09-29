@@ -35,11 +35,6 @@ export default function LoginPage() {
     <div className="auth-page">
       <SiteHeader
         compact
-        actions={
-          <Link href="/signup" className="button button--primary button--small">
-            Create account
-          </Link>
-        }
       />
       <main className="auth-page__main">
         <section className="auth-card" aria-labelledby="login-heading">

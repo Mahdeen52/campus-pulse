@@ -40,12 +40,7 @@ export default function SignupPage() {
   return (
     <div className="auth-page">
       <SiteHeader
-        compact
-        actions={
-          <Link href="/login" className="button button--ghost button--small">
-            Log in
-          </Link>
-        }
+        compact 
       />
       <main className="auth-page__main">
         <section className="auth-card auth-card--wide" aria-labelledby="signup-heading">
