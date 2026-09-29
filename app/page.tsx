@@ -4,11 +4,15 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import LogoutButton from "@/components/LogoutButton";
 import SiteHeader from "@/components/SiteHeader";
+import { redirect } from "next/navigation";
 
 export default async function HomePage() {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
+  if (!session) {
+    redirect("/login");
+}
   const posts = await db.orm.public.Post.include("author").all();
   const firstName = session?.user.name?.split(" ")[0] ?? "Student";
   const userInitial = session?.user.name?.charAt(0).toUpperCase() ?? "S";
