@@ -1,0 +1,47 @@
+// use prisma-8
+
+model User {
+  id            Int      @id @default(autoincrement())
+  name          String
+  email         String   @unique
+  
+  emailVerified Boolean  @default(false)
+  image         String?
+
+  university    String
+  department    String
+
+  posts         Post[]
+  comments      Comment[]
+
+  createdAt     TimestamptzString @default(now())
+  updatedAt     temporal.updatedAtString()
+}
+model Post {
+  id          Int      @id @default(autoincrement())
+  content     String
+  imageUrl    String?
+  isAnonymous Boolean  @default(false)
+
+  authorId    Int
+  author      User     @relation(fields: [authorId], references: [id])
+
+  comments    Comment[]
+
+  createdAt   TimestamptzString @default(now())
+  updatedAt   temporal.updatedAtString()
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  content   String
+
+  authorId  Int
+  author    User     @relation(fields: [authorId], references: [id])
+
+  postId    Int
+  post      Post     @relation(fields: [postId], references: [id])
+
+  createdAt TimestamptzString @default(now())
+  updatedAt temporal.updatedAtString()
+}
