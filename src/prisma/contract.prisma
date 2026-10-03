@@ -17,6 +17,7 @@ model User {
   createdAt     TimestamptzString @default(now())
   updatedAt     temporal.updatedAtString()
 }
+
 model Post {
   id          Int      @id @default(autoincrement())
   content     String
@@ -31,6 +32,7 @@ model Post {
   createdAt   TimestamptzString @default(now())
   updatedAt   temporal.updatedAtString()
 }
+
 
 model Comment {
   id        Int      @id @default(autoincrement())
